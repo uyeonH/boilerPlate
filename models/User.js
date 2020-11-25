@@ -40,6 +40,7 @@ const userSchema = mongoose.Schema({
 })
 userSchema.pre('save', function (next) {
     var user = this;
+    //비밀번호가 수정되면
     if (user.isModified('password')) {
 
 
@@ -53,6 +54,9 @@ userSchema.pre('save', function (next) {
             })
 
         })
+    }
+    else {
+        next()
     }
 })
 
